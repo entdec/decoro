@@ -1,8 +1,6 @@
 # Decoro
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/decoro`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Decorators for Rails. Use only certain code for views? Decorators are the spot to put it!
 
 ## Installation
 
@@ -22,7 +20,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Say you have a need to transform products to an options array (for use in a select):
+
+```ruby
+class ProductsDecorator < ApplicationDecorator
+  def options_for_select
+    model.map { |p| [p.display_name, p.id] }
+  end
+end
+```
+
+Then in your view:
+
+```ruby
+- decorate(@products) do |products|
+  = f.association :product, collection: products.options_for_select
+```
 
 ## Development
 
