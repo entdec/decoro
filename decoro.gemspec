@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rubocop', '~> 0.80'
   spec.add_development_dependency 'solargraph', '~> 0.38'
+  spec.add_development_dependency 'auxilium', '~> 0.2'
 
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
